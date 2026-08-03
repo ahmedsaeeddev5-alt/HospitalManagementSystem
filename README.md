@@ -120,22 +120,23 @@ The system is built around a relational database model including:
 
 ## 📸 Screenshots
 
-> Replace with real screenshots from your project
-
 ### 🏠 Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](./Screenshots/dashboard.png)
 
 ### 👨‍⚕️ Patients Management
-![Patients](screenshots/patients.png)
+![Patients](./Screenshots/patients.png)
 
 ### 🩺 Doctors Management
-![Doctors](screenshots/doctors.png)
+![Doctors](./Screenshots/doctors.png)
 
 ### 📅 Appointments
-![Appointments](screenshots/appointments.png)
+![Appointments](./Screenshots/appointments.png)
 
 ### 🔐 Login Page
-![Login](screenshots/login.png)
+![Login](./Screenshots/login.png)
+
+### 💰 Bills
+![Bills](./Screenshots/Bills.png)
 
 ---
 
