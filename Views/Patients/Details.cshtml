@@ -1,0 +1,22 @@
+﻿@model HospitalManagementSystem.Models.Patient
+
+@{
+    ViewData["Title"] = "Patient Details";
+}
+
+<h2>Patient Details</h2>
+
+<div class="card p-3">
+
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <img src="@Model.ImagePath" width="120" height="120" class="rounded-circle" />
+    }
+
+    <h4>Name: @Model.Name</h4>
+    <p>Age: @Model.Age</p>
+    <p>Phone: @Model.Phone</p>
+    <p>Medical History: @Model.MedicalHistory</p>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary mt-2">Back</a>

@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Hospital System</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+            body {
+                background-color: #f4f6f9;
+            }
+
+            /* Sidebar */
+            .sidebar {
+                height: 100vh;
+                width: 250px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #343a40;
+                padding-top: 20px;
+            }
+
+            .sidebar a {
+                padding: 12px;
+                text-decoration: none;
+                color: white;
+                display: block;
+            }
+
+            .sidebar a:hover {
+                background-color: #495057;
+            }
+
+            /* Content */
+            .content {
+                margin-left: 260px;
+                padding: 20px;
+            }
+
+            /* Navbar */
+            .topbar {
+                margin-left: 260px;
+                background: white;
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-white text-center">🏥 Hospital</h4>
+
+        <a asp-controller="Dashboard" asp-action="Index">
+            <i class="bi bi-speedometer2"></i> Dashboard
+        </a>
+
+        <a asp-controller="Patients" asp-action="Index">
+            <i class="bi bi-person"></i> Patients
+        </a>
+
+        <a asp-controller="Doctors" asp-action="Index">
+            <i class="bi bi-clipboard2-pulse"></i> Doctors
+        </a>
+
+        <a asp-controller="Departments" asp-action="Index">
+            <i class="bi bi-building"></i> Departments
+        </a>
+
+        <a asp-controller="Appointments" asp-action="Index">
+            <i class="bi bi-calendar-check"></i> Appointments
+        </a>
+
+        <a asp-controller="Bills" asp-action="Index">
+            <i class="bi bi-receipt"></i> Bills
+        </a>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="topbar d-flex justify-content-between align-items-center">
+        <h5 class="m-0">@ViewData["Title"]</h5>
+
+        <div>
+            <span class="me-3">Welcome 👋</span>
+
+            <a asp-controller="Account" asp-action="Logout" class="btn btn-danger btn-sm">
+                Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

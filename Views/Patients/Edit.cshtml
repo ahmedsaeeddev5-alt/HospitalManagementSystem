@@ -1,0 +1,69 @@
+﻿@model HospitalManagementSystem.Models.Patient
+
+@{
+    ViewData["Title"] = "Edit Patient";
+}
+
+<h2>Edit Patient</h2>
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div>
+        <label>Age</label>
+        <input asp-for="Age" class="form-control" />
+    </div>
+
+    <div>
+        <label>Phone</label>
+        <input asp-for="Phone" class="form-control" />
+    </div>
+
+    <div>
+        <label>Medical History</label>
+        <textarea asp-for="MedicalHistory" class="form-control"></textarea>
+    </div>
+
+   <div class="mb-3">
+    <input asp-for="ClientFile"
+           type="file"
+           class="form-control"
+           onchange="loadfile(event)" />
+
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <img id="myImg"
+             src="@Model.ImagePath?v=@DateTime.Now.Ticks"
+             class="img-thumbnail mt-3"
+             style="width:150px;height:150px;object-fit:cover;" />
+    }
+    else
+    {
+        <img id="myImg"
+             class="img-thumbnail mt-3"
+             style="width:150px;height:150px;object-fit:cover;display:none;" />
+    }
+</div>
+    <hr />
+    <button type="submit" class="btn btn-primary mt-2">Update</button>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        var loadfile = function (event) {
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                var myImg = document.getElementById('myImg');
+                myImg.src = reader.result;
+            };
+
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+}

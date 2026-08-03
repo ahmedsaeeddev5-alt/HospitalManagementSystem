@@ -1,0 +1,45 @@
+﻿@model HospitalManagementSystem.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+@if (TempData["ConfirmLink"] != null)
+{
+    <div class="alert alert-info">
+        <a href="@TempData["ConfirmLink"]">Confirm Email</a>
+    </div>
+}
+<form asp-action="Register" method="post">
+
+    <div>
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Password</label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Confirm Password</label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Role</label>
+        <select asp-for="Role" asp-items="Model.Roles" class="form-control"></select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Register</button>
+</form>
+
+<a asp-action="Login">Already have account?</a>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

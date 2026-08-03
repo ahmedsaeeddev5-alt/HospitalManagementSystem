@@ -1,0 +1,16 @@
+﻿@model HospitalManagementSystem.Models.Bill
+
+@{
+    ViewData["Title"] = "Bill Details";
+}
+
+<h2>Bill Details</h2>
+
+<ul>
+    <li>Patient ID: @Model.PatientId</li>
+    <li>Total: @Model.Total</li>
+    <li>Details: @Model.Details</li>
+    <li>Created At: @Model.CreatedAt</li>
+</ul>
+
+<a asp-action="Index" class="btn btn-secondary">Back</a>

@@ -1,0 +1,66 @@
+﻿@model HospitalManagementSystem.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row">
+
+    <!-- Patients -->
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Patients</h5>
+                <h2>@Model.PatientsCount</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Doctors -->
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Doctors</h5>
+                <h2>@Model.DoctorsCount</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointments -->
+    <div class="col-md-3">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Appointments</h5>
+                <h2>@Model.AppointmentsCount</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bills -->
+    <div class="col-md-3">
+        <div class="card text-white bg-danger mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Bills</h5>
+                <h2>@Model.BillsCount</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr />
+
+<!-- Revenue -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card border-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Total Revenue</h5>
+                <h3>@Model.CountRevenue.ToString("C")</h3>
+            </div>
+        </div>
+    </div>
+</div>
+

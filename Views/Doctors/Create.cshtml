@@ -1,0 +1,79 @@
+﻿@model HospitalManagementSystem.ViewModels.CreateDoctorViewModel
+
+@{
+    ViewData["Title"] = "Create Doctor";
+}
+
+<h2>Create Doctor</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+
+    <div>
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Specialty</label>
+        <input asp-for="Specialty" class="form-control" />
+        <span asp-validation-for="Specialty" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Department</label>
+        <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.Departments"></select>
+    </div>
+
+    <div class="border border-2 border-dashed rounded p-4 text-center">
+        <label class="form-label fw-bold">Upload Image</label>
+
+       <input asp-for="File"
+       type="file"
+       class="form-control d-none"
+       id="fileInput"
+       accept="image/*"
+       onchange="loadfile(event)" />
+
+        <label for="fileInput" class="btn btn-outline-primary mt-2">
+            Choose Image
+        </label>
+
+        <div class="mt-3">
+            <img id="myImg" class="img-thumbnail shadow" style="max-height:200px; display:none;" />
+        </div>
+    </div>
+    <br />
+    <hr />
+    <button type="submit" class="btn btn-success mt-2">Save</button>
+</form>
+@section Scripts {
+    <partial name="\\\_ValidationScriptsPartial" />
+    <script>
+        var loadfile = function (event) {
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                var myImg = document.getElementById('myImg');
+                myImg.src = reader.result;
+            };
+
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+    <script>
+        var loadfile = function (event) {
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                var img = document.getElementById('myImg');
+                img.src = reader.result;
+                img.style.display = "block";
+            };
+
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+
+}
+

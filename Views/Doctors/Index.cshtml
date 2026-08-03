@@ -1,0 +1,51 @@
+﻿@model IEnumerable<HospitalManagementSystem.Models.Doctor>
+
+@{
+    ViewData["Title"] = "Doctors";
+}
+
+<h2>Doctors</h2>
+
+<a asp-action="Create" class="btn btn-primary">Add New Doctor</a>
+
+<table class="table table-striped table-hover mt-3">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Specialty</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+       @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                   @if (!string.IsNullOrEmpty(item.ImagePath))
+{
+    <img src="@item.ImagePath"
+         style="width:68px;height:68px;object-fit:cover"
+         class="img-thumbnail" />
+}
+else
+{
+    <span>No Image</span>
+}
+                </td>
+
+                <td>@item.Name</td>
+                <td>@item.Specialty</td>
+                <td>@item.DepartmentId</td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

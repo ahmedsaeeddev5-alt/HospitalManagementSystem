@@ -1,0 +1,14 @@
+﻿@model HospitalManagementSystem.Models.Department
+
+@{
+    ViewData["Title"] = "Department Details";
+}
+
+<h2>Department Details</h2>
+
+<div class="card p-3">
+    <h4>Name: @Model.Name</h4>
+    <p>Doctors Count: @(Model.Doctors?.Count() ?? 0)</p>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary mt-2">Back</a>

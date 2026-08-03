@@ -1,0 +1,36 @@
+﻿@model HospitalManagementSystem.ViewModels.CreateAppointmentViewModel
+
+@{
+    ViewData["Title"] = "Edit Appointment";
+}
+
+<h2>Edit Appointment</h2>
+
+<form asp-action="Edit" method="post">
+
+    <div>
+        <label>Patient</label>
+        <select asp-for="PatientId" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Patients, "Id", "Name"))">
+        </select>
+    </div>
+
+    <div>
+        <label>Doctor</label>
+        <select asp-for="DoctorId" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Doctors, "Id", "Name"))">
+        </select>
+    </div>
+
+    <div>
+        <label>Date</label>
+        <input asp-for="Date" type="datetime-local" class="form-control" />
+    </div>
+
+    <div>
+        <label>Notes</label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Update</button>
+</form>

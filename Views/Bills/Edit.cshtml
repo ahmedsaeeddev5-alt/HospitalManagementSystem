@@ -1,0 +1,29 @@
+﻿@model HospitalManagementSystem.ViewModels.CreateBillViewModel
+
+@{
+    ViewData["Title"] = "Edit Bill";
+}
+
+<h2>Edit Bill</h2>
+
+<form asp-action="Edit" method="post">
+
+    <div>
+        <label>Patient</label>
+        <select asp-for="PatientId" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Patients, "Id", "Name"))">
+        </select>
+    </div>
+
+    <div>
+        <label>Total</label>
+        <input asp-for="Total" class="form-control" />
+    </div>
+
+    <div>
+        <label>Details</label>
+        <textarea asp-for="Details" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Update</button>
+</form>

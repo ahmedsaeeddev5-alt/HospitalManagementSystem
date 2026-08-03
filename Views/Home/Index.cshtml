@@ -1,0 +1,115 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+
+    <!-- Header -->
+    <div class="text-center mb-4">
+        <h1 class="display-4 fw-bold text-primary">🏥 Hospital Management System</h1>
+        <p class="lead text-muted">Manage Doctors, Patients, Appointments and Bills </p>
+    </div>
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <!-- Welcome -->
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body text-center">
+                <h4 class="mb-0">
+                    👋 Welcome, <span class="text-success">@User.Identity.Name</span>
+                </h4>
+            </div>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="row g-4">
+
+            <!-- Doctors -->
+            <div class="col-md-3">
+                <div class="text-decoration-none">
+                    <div class="card text-center shadow-sm border-0 dashboard-card">
+                        <div class="card-body">
+                            <h1>👨‍⚕️</h1>
+                            <h5 class="mt-2 text-dark">Doctors</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patients -->
+            <div class="col-md-3">
+                <div class="text-decoration-none">
+                    <div class="card text-center shadow-sm border-0 dashboard-card">
+                        <div class="card-body">
+                            <h1>🧑‍🤝‍🧑</h1>
+                            <h5 class="mt-2 text-dark">Patients</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appointments -->
+            <div class="col-md-3">
+                <div class="text-decoration-none">
+                    <div class="card text-center shadow-sm border-0 dashboard-card">
+                        <div class="card-body">
+                            <h1>📅</h1>
+                            <h5 class="mt-2 text-dark">Appointments</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bills -->
+            <div class="col-md-3">
+                <div class="text-decoration-none">
+                    <div class="card text-center shadow-sm border-0 dashboard-card">
+                        <div class="card-body">
+                            <h1>💰</h1>
+                            <h5 class="mt-2 text-dark">Bills</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+    else
+    {
+        <!-- Guest Section -->
+        <div class="text-center mt-5">
+            <div class="card shadow-sm border-0 p-4">
+                <h4 class="mb-3">Start using the system</h4>
+                <p class="text-muted">Log in or create a new account</p>
+
+                <div class="mt-3">
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-primary px-4 me-2">
+                        Login
+                    </a>
+
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-outline-primary px-4">
+                        Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+<!-- CSS -->
+<style>
+    .dashboard-card {
+        transition: all 0.3s ease;
+        border-radius: 15px;
+    }
+
+        .dashboard-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+</style>

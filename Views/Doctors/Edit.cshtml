@@ -1,0 +1,57 @@
+﻿@model HospitalManagementSystem.ViewModels.CreateDoctorViewModel
+
+@{
+    ViewData["Title"] = "Edit Doctor";
+}
+
+<h2>Edit Doctor</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+    <input asp-for="Id" type="hidden" />
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div>
+        <label>Specialty</label>
+        <input asp-for="Specialty" class="form-control" />
+    </div>
+
+    <div>
+        <label>Department</label>
+        <select asp-for="DepartmentId"
+                class="form-control"
+                asp-items="@(new SelectList(ViewBag.Departments, "Id", "Name"))">
+        </select>
+    </div>
+
+    <div>
+       <input asp-for="File" type="file" onchange="loadfile(event)" />
+        <img id="myImg"
+     src="@Model.ImagePath"
+     width="150" />
+
+    </div>
+    
+
+    <button type="submit" class="btn btn-primary mt-2">Update</button>
+</form>
+@section Scripts {
+    <partial name="\\\_ValidationScriptsPartial" />
+    <script>
+        var loadfile = function (event) {
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                var myImg = document.getElementById('myImg');
+                myImg.src = reader.result;
+            };
+
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+}

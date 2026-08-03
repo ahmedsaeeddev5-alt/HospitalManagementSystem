@@ -1,0 +1,19 @@
+﻿@model HospitalManagementSystem.Models.Bill
+
+@{
+    ViewData["Title"] = "Delete Bill";
+}
+
+<h2>Are you sure you want to delete this bill?</h2>
+
+<ul>
+    <li>Patient ID: @Model.PatientId</li>
+    <li>Total: @Model.Total</li>
+</ul>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

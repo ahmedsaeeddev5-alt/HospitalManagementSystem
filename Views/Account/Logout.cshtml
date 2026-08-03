@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Logout";
+}
+
+<h2>Logout</h2>
+
+<div class="alert alert-warning">
+    Are you sure you want to logout?
+</div>
+
+<form asp-action="LogoutConfirmed" method="post">
+    <button type="submit" class="btn btn-danger">Yes, Logout</button>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Cancel</a>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,18 @@
+﻿# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+
+# Database files
+*.mdf
+*.ldf
+
+# Logs
+*.log
+
+# User secrets
+secrets.json

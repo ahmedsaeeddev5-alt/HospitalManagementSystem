@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "GenerateFromAppointment";
+}
+
+<h1>GenerateFromAppointment</h1>
+<a asp-controller="Bills"
+       asp-action="GenerateFromAppointment"
+       asp-route-appointmentId="@Model.Id"
+       class="btn btn-warning">
+    Generate Bill
+</a>
+

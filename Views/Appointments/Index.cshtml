@@ -1,0 +1,50 @@
+﻿@model IEnumerable<HospitalManagementSystem.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Appointments";
+}
+
+<h2>Appointments</h2>
+
+<a asp-action="Create" class="btn btn-primary">Create New Appointment</a>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PatientId</td>
+                <td>@item.DoctorId</td>
+                <td>@item.Date</td>
+                <td>@item.Status</td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-action="ChangeStatus"
+                       asp-route-id="@item.Id"
+                       asp-route-status="Approved">Approve</a> |
+
+                    <a asp-controller="Bills"
+                           asp-action="GenerateFromAppointment"
+                           asp-route-appointmentId="@item.Id"
+                           class="btn btn-warning btn-sm">
+                        Generate Bill
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
